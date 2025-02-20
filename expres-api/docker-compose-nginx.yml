@@ -1,0 +1,11 @@
+version: '3.2'
+services:
+  redis:
+    container_name: 'nginx-rapi'
+    image: nginx:latest
+    restart: always
+    ports:
+      - 6001:80
+      - 443:443
+    volumes:
+      - /d/volumes/Rapi/nginx/default.conf:/etc/nginx/conf.d/default.conf

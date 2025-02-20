@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "noLib": false,
+    "allowJs": false,
+    "skipLibCheck": true,
+    "rootDir": "./src",
+    "outDir": "dist",
+    "baseUrl": "./",
+
+    "noEmit": false,
+    "strict": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    // "types": [], no permitia carfa 'fs'
+    "typeRoots": ["./node_modules/@types"],
+    /*In order to dynamically import json files : import data from './data.json'*/
+    "resolveJsonModule": true,
+    /* Advanced Options */
+    "forceConsistentCasingInFileNames": true,
+    "noUnusedParameters": true,
+    "allowSyntheticDefaultImports": true,
+    "lib": ["es2022"]
+  },
+  "include": ["src/**/*"],
+  "exclude": [
+    "node_modules",
+    "**/build",
+    "**/dist",
+    "**/*.md",
+    "**/rollup.config.js",
+    "src/**/*.test.ts"
+  ]
+}

@@ -1,0 +1,11 @@
+services:
+  olecram:
+    container_name: olecram-daemon-ulises
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: moviedomfo/olecram-daemon:1.0
+    env_file:
+      - .env.prod.docker
+    volumes:
+      - /d/volumes/olecram-daemon/logs:/app/logs

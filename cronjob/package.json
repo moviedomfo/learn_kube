@@ -1,0 +1,48 @@
+{
+  "name": "boleteria-vip-olecram-daemon",
+  "version": "1.0.2",
+  "description": "Servicio boleteria-vip-olecram-daemon",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon dist/bundle.js",
+    "prod": "npm run build && node dist/bundle.js",
+    "prod2": "npm run build2 && node dist/app.js",
+    "dev": "tsc && nodemon dist/app.js",
+    "build": "node esbuild.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build2": "tsc && copy package.json dist",
+    "builddocker": "tsc && cp package.json dist"
+  },
+  "author": "Marcelo F. Oviedo",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^9.4.0",
+    "axios": "^1.7.2",
+    "colors": "^1.4.0",
+    "core-js": "^3.37.1",
+    "dayjs": "^1.11.11",
+    "dotenv": "^16.4.5",
+    "esbuild-runner": "^2.2.2",
+    "mv": "^2.1.1",
+    "node-cron": "^3.0.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.3",
+    "sequelize-auto": "^0.8.8",
+    "tedious": "^18.2.0",
+    "ts-node": "^10.9.2",
+    "typescript-logging": "^2.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.6",
+    "@babel/preset-env": "^7.24.6",
+    "@babel/preset-typescript": "^7.24.6",
+    "@types/node": "^20.12.13",
+    "@types/node-cron": "^3.0.11",
+    "babel-loader": "^9.1.3",
+    "esbuild": "0.21.4",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.5",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  }
+}

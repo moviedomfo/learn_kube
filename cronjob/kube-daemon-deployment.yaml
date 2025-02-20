@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: olecram-daemon-deployment
+  labels:
+    app: olecram-daemon
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: olecram-daemon
+  template:
+    metadata:
+      labels:
+        app: olecram-daemon
+    spec:
+      containers:
+        - name: olecram-daemon
+          image: moviedomfo/olecram-daemon:3.0
+          env:
+            - name: APP_NAME
+              value: "Socios rapi daemon"
+            - name: APP_BOLETERIA_BASE_URL
+              value: "http://192.168.2.106"
+            - name: APP_FILES
+              value: "logs"
+            - name: APP_REPORTS
+              value: "reports"
+            - name: APP_LIMITS
+              value: "1000"
+            - name: APP_SCHEDULING
+              value: "*/1 * * * *"
+            - name: BD_PORT
+              value: "1433"
+            - name: BD_HOST
+              value: "192.168.2.106"
+            - name: BD_DATABASE_NAME
+              value: "socios_integracion"
+            - name: BD_INSTANCE
+              value: "SQLEXPRESS"
+            - name: BD_USER
+              value: "sa"
+            - name: BD_PWD
+              value: "1234"
+            - name: BD_LOG
+              value: "true"
+            - name: BD_LOCAL
+              value: "true"
+          volumeMounts:
+            - name: logs-volume
+              mountPath: /app/logs
+      restartPolicy: Always 
+      volumes:
+        - name: logs-volume
+          hostPath:
+            path: /run/desktop/mnt/host/d/volumes/olecram-daemon
+            type: DirectoryOrCreate

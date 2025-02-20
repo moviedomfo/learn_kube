@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: logs1-pv
+spec:
+  capacity:
+    storage: 100Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /run/desktop/mnt/host/d/volumes/olecram-daemon-1/logs
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual  # Clase de almacenamiento explícita

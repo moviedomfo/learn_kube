@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: olecram-daemon-pod
+  labels:
+    app: olecram-daemon
+spec:
+  containers:
+    - name: olecram-daemon
+      image: moviedomfo/olecram-daemon:1.0
+      env:
+        - name: APP_NAME
+          value: "Daemon docker 1"
+        - name: APP_BOLETERIA_BASE_URL
+          value: "http://192.168.2.106:7076"
+        - name: APP_FILES
+          value: "/app/logs"
+      volumeMounts:
+        - name: logs-volume
+          mountPath: /app/logs
+  volumes:
+    - name: logs-volume
+      hostPath:
+        path: /d/volumes/olecram-daemon/logs
+        type: DirectoryOrCreate

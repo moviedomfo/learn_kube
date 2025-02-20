@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rapi-api-cliente1-dep
+  labels:
+    app: rapi-api-cliente1
+spec:
+  replicas: 2  # Podemos escalarlo si queremos
+  selector:
+    matchLabels:
+      app: rapi-api-cliente1
+  template:
+    metadata:
+      labels:
+        app: rapi-api-cliente1
+    spec:
+      containers:
+      - name: rapi-api-cliente1-cont
+        image: moviedomfo/rapi-api:1.0
+        ports:
+        - containerPort: 3050
+        env:
+        - name: APP_CLIENT_NAME
+          value: "RAPI API Express Cliente 1"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rapi-api-cliente2-dep
+  labels:
+    app: rapi-api-cliente2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: rapi-api-cliente2
+  template:
+    metadata:
+      labels:
+        app: rapi-api-cliente2
+    spec:
+      containers:
+      - name: rapi-api-cliente2-cont
+        image: moviedomfo/rapi-api:1.0
+        ports:
+        - containerPort: 3050
+        env:
+        - name: APP_CLIENT_NAME
+          value: "RAPI API Express Cliente 2"

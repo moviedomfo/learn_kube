@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rapi-api-dep
+  labels:
+    app: rapi-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rapi-api
+  template:
+    metadata:
+      labels:
+        app: rapi-api
+    spec:
+      containers:
+      - name: rapi-api-cont
+        image: moviedomfo/rapi-api:1.0
+        ports:
+        - containerPort: 80

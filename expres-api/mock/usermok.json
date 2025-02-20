@@ -1,0 +1,26 @@
+{
+  "Users": [
+    {
+      "id": "6bf87313-3d4d-4a6e-89b4-6d69e096e9d1",
+      "userName": "admin",
+      "name": "admin",
+      "lastName": "admin",
+      "email": "admin@mock.com",
+      "password": "elevisor+455",
+      "passwordHash": "$2a$12$zeJYg1vamh/x9wWKNOZJr.G6nW692puJ/2MSxk/wpCzXWaT0ebUW6",
+
+      "roles": ["admin", "manager"]
+    },
+    {
+      "id": "c3a9c9ac-2bc7-4d3c-aeb7-c06dfdc56f95",
+      "userName": "report",
+      "name": "",
+      "lastName": "",
+      "email": "report@mock.com",
+      "password": "G7m!2R@8tP#Q",
+      "passwordHash": "$2a$12$CoUu..8P.2UY4FJFacJ1dO0k9ZMB0u40/jlWZ4/VMl37keP7wgcxO",
+
+      "roles": ["user"]
+    }
+  ]
+}
