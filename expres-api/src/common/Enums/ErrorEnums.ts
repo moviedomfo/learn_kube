@@ -11,8 +11,7 @@ export enum ErrorCodeEnum {
   SEQUALIZE_ELOGIN = "5001",
   /**SequelizeDatabaseError */
   SEQUALIZE_DATA = "5001",
-  KAFKA_TIMEOUT = "5100",
-  KAFKA_TOPIC_NOT_EXIST = "5101",
+
   MONGO_TIMEOUT = "5200",
   REDIS = "5300",
   REDIS_NOAUTH = "5301",

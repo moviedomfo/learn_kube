@@ -36,6 +36,7 @@ const reportsController: ReportsController = Container.resolve("reportsControlle
  */
 reportsRouter.get("/searchCsv", checkTokenMeddeware, reportsController.SearchCsv);
 
+
 /**
  * @swagger
  * /api/reports//:

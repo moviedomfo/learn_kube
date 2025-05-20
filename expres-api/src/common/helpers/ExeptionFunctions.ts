@@ -90,7 +90,7 @@ export class ExeptionFunctions {
     let errorCode;
     if (error.cause.code === "ECONNREFUSED") {
       message = "Error de conexión al buss de eventos Kafka .-";
-      errorCode = ErrorCodeEnum.KAFKA_TIMEOUT;
+      errorCode = ErrorCodeEnum.UNKNOWED;
     }
     if (!message) {
       message = error.message;

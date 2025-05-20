@@ -12,8 +12,10 @@ export default class SociosController {
     try {
 
       const { id } = req.params;
-      if (!id)
-        return res.status(400).json({ message: "El parametro numSocio es obligatorio" });
+      if (!id) {
+        res.status(400).json({ message: "El parametro numSocio es obligatorio" });
+        return;
+      }
       const numSocioParsed = parse_Int(id as string); // Página actual
 
       const result = await this.sociosService.Get(numSocioParsed);
@@ -27,12 +29,18 @@ export default class SociosController {
   public GetAll = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { startDate, limit, offset } = req.query;
-      if (!startDate)
-        return res.status(400).json({ message: "El parametro startDate es obligatorio" });
-      if (!limit)
-        return res.status(400).json({ message: "El parametro limit es obligatorio" });
-      if (!offset)
-        return res.status(400).json({ message: "El parametro offset es obligatorio" });
+      if (!startDate) {
+        res.status(400).json({ message: "El parametro startDate es obligatorio" });
+        return;
+      }
+      if (!limit) {
+        res.status(400).json({ message: "El parametro limit es obligatorio" });
+        return;
+      }
+      if (!offset) {
+        res.status(400).json({ message: "El parametro offset es obligatorio" });
+        return;
+      }
 
       const offsetParsed = parse_Int(offset as string); // Página actual
       const limitParsed = parse_Int(limit as string); // Tamaño de página
@@ -52,12 +60,17 @@ export default class SociosController {
   public SearchSimpleView = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { startDate, limit, offset } = req.query;
-      if (!startDate)
-        return res.status(400).json({ message: "El parametro startDate es obligatorio" });
-      if (!limit)
-        return res.status(400).json({ message: "El parametro limit es obligatorio" });
-      if (!offset)
-        return res.status(400).json({ message: "El parametro offset es obligatorio" });
+      if (!startDate) {
+        res.status(400).json({ message: "El parametro startDate es obligatorio" });
+      }
+      if (!limit) {
+        res.status(400).json({ message: "El parametro limit es obligatorio" });
+        return;
+      }
+      if (!offset) {
+        res.status(400).json({ message: "El parametro offset es obligatorio" });
+        return;
+      }
       const offsetParsed = parse_Int(offset as string); // Página actual
       const limitParsed = parse_Int(limit as string); // Tamaño de página
 
@@ -85,11 +98,15 @@ export default class SociosController {
     try {
       const { numSocio, ultimaModifi } = req.query;
 
-      if (!numSocio)
-        return res.status(400).json({ message: "El parametro numSocio es obligatorio" });
-      if (!ultimaModifi)
-        return res.status(400).json({ message: "El parametro ultimaModifi es obligatorio" });
+      if (!numSocio) {
+        res.status(400).json({ message: "El parametro numSocio es obligatorio" });
+        return;
+      }
 
+      if (!ultimaModifi) {
+        res.status(400).json({ message: "El parametro ultimaModifi es obligatorio" });
+        return;
+      }
 
       const numSocioParsed = parse_Int(numSocio as string); // Tamaño de página
       // const ultimaModifiParced = new Date(ultimaModifi.toString());
