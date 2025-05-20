@@ -1,0 +1,4 @@
+resources:
+  - rapi-api-deploy.yaml
+  - rapi-api-services.yaml
+  - rapi-api-ingress.yaml

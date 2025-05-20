@@ -30,6 +30,19 @@ kubectl get all
   service/rapi-api-service   NodePort    10.105.182.112   <none>        8080:31001/TCP
 
 3️⃣ Deployment : gestiona la creación y escalabilidad de los pods.
+    Recurso de Kubernetes de más alto nivel que se encarga de gestionar la creación y el ciclo de vida de los Pods.
+    Permite características como:
+  
+      Escalado horizontal: Incrementar o reducir la cantidad de réplicas de Pods.
+      Actualizaciones automatizadas: Actualizar Pods con nuevas versiones de la imagen de forma controlada (rolling updates).
+      Alta disponibilidad: Kubernetes reemplaza automáticamente los Pods fallidos para garantizar que siempre haya suficientes réplicas ejecutándose.
+
+    Ventajas del Deployment:
+      Es resiliente: Los Pods fallidos son reemplazados automáticamente.
+      Escalabilidad: Puedes ejecutar múltiples réplicas de tu aplicación fácilmente.
+      Gestión de versiones: Facilita la implementación y actualización continua de tu aplicación.
+      Idóneo para producción: Es ideal para entornos donde necesitas confiabilidad y alta disponibilidad.
+
   deployment.apps/rapi-api-dep  1/1
   ✅ Detalles:
 
@@ -39,6 +52,16 @@ kubectl get all
     Réplicas listas: 1 (el pod está corriendo sin problemas).
 
 📌 Conclusión: Este deployment asegura que siempre haya al menos un pod ejecutando rapi-api.
+
+Despliegue del Deployment:
+      kubectl apply -f olecram-daemon-deployment.yaml
+Verifica que el Deployment esté funcionando:
+
+  kubectl get deployments
+Comprueba el Pod asociado:
+
+  kubectl get pods
+  kubectl logs <nombre-del-pod>
 
 4️⃣ ReplicaSet :Es el objeto que garantiza que el número correcto de pods esté corriendo.
 
@@ -74,14 +97,32 @@ kubectl get all
         |   - Expone la API fuera del clúster                 |
         |   - Disponible en: NodePort 31001                   |
         +------------------------------------------------------+
+4️⃣ DaemonSet
+ Garantiza que se ejecute una copia de un Pod en cada nodo (o en algunos nodos seleccionados) del clúster.
+
+ Ejemplos:
+
+  🔍 log collector Recolectar logs de cada nodo (ej: fluentd, filebeat, logstash)
+  📈 monitoring agent Monitorear CPU, memoria, red, etc. (ej: Prometheus Node Exporter)
+  🔧 nodo configurador Aplicar configuraciones específicas por nodo
+  🔒 agentes de seguridad Inspección de tráfico o control de acceso loc
+
+Ejemplo típico cuando necesitás:
+
+- montar un disco o volumen en cada nodo.
+- que cada nodo tenga corriendo un agente de backup.
+- inspeccionar tráfico de red local de cada nodo.
+📌 ¿Entonces por qué casi nunca se define un ReplicaSet directamente? Porque los Deployments ya crean y gestionan un ReplicaSet por vos.
+
+🛠 Si hacés
+    kubectl get replicaset
+   vas a ver algo como:
+      NAME                     DESIRED   CURRENT   READY   AGE
+      mi-api-rs-548dfcb7b8     2         2         2       5m
 
 ## rapi-api-ingress.yaml
 
-📌 Explicación del Ingress:
-
-    Define el host rapi.local (podés modificarlo o agregarlo en /etc/hosts).
-    Redirige /cliente1 al servicio rapi-api-cliente1-service.
-    Redirige /cliente2 al servicio rapi-api-cliente2-service.
+📌 Explicación del Ingress: En /kube-ingress/readme.md
 
 ## Run locally
 
